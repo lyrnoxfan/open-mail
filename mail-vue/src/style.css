@@ -1,0 +1,321 @@
+/* ============================================================
+   Cloud Mail — 「花信」皮肤
+   日系杂志纸张排版：纸色底、墨色字、宋体衬线、粉蓝点缀、细线分隔
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 120, 128, .4) transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- 设计变量 ---------- */
+:root {
+    --bg: #faf8f3;                 /* 纸色 */
+    --card: #fffdf9;               /* 卡片：暖白 */
+    --card-2: #fffdf9;
+    --text-1: #26262e;             /* 墨色 */
+    --text-2: #8f887a;
+    --text-3: #b6ad9c;
+    --accent: #cf6390;             /* 深粉 */
+    --accent-soft: rgba(207, 99, 144, .1);
+    --accent-2: #5b7fd6;           /* 花信蓝 */
+    --accent-2-soft: rgba(91, 127, 214, .1);
+    --danger: #b34434;
+    --success: #6a9a6b;
+    --warning: #c08a3e;
+    --separator: #e7ddcc;          /* 细线 */
+    --separator-strong: #d3c2a4;
+    --shadow-sm: 0 1px 3px rgba(90, 70, 50, .07);
+    --shadow-md: 0 4px 16px rgba(90, 70, 50, .1);
+    --radius-card: 12px;
+    --radius-btn: 10px;
+    --tabbar-bg: rgba(250, 248, 243, .94);
+    --navbar-bg: rgba(250, 248, 243, .94);
+    --serif: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+    --latin: "Didot", "Bodoni MT", Georgia, serif;
+
+    /* 老变量兼容映射 */
+    --dark-border: var(--separator-strong);
+    --base-fill: var(--el-fill-color-light);
+    --extra-light-fill: var(--el-fill-color-light);
+    --light-border: var(--separator);
+    --light-border-color: var(--separator);
+    --light-ill: var(--el-fill-color-light);
+    --regular-text-color: var(--text-1);
+    --secondary-text-color: var(--text-2);
+    --email-scroll-content-color: var(--text-2);
+    --header-actions-border: 0 1px 0 var(--separator);
+    --aside-backgound: var(--card);
+    --choose-account-background: var(--accent-soft);
+    --email-hover-background: var(--el-fill-color-light);
+    --email-right-click-background: var(--accent-soft);
+    --loadding-background: var(--bg);
+    --loading-hide-transition: opacity .3s ease;
+    --message-block-color: rgba(0, 0, 0, .4);
+    --settings-page-background: var(--bg);
+
+    /* Element Plus 对齐 */
+    --el-color-primary: #cf6390;
+    --el-color-primary-light-3: #dd8aa9;
+    --el-color-primary-light-5: #e8a9c2;
+    --el-color-primary-light-7: #f2c8d8;
+    --el-color-primary-light-8: #f7dcea;
+    --el-color-primary-light-9: #fbeef4;
+    --el-color-primary-dark-2: #b04e78;
+    --el-bg-color: #fffdf9;
+    --el-bg-color-page: #faf8f3;
+    --el-text-color-primary: #26262e;
+    --el-text-color-regular: #4a4a52;
+    --el-text-color-secondary: #8f887a;
+    --el-text-color-placeholder: #b6ad9c;
+    --el-border-color: #e7ddcc;
+    --el-border-color-light: #efe6d4;
+    --el-border-color-lighter: #f4ecdc;
+    --el-fill-color-blank: #fffdf9;
+    --el-fill-color-light: rgba(143, 136, 122, .08);
+    --el-box-shadow-light: 0 4px 16px rgba(90, 70, 50, .1);
+    --el-border-radius-base: 10px;
+}
+
+html.dark {
+    --bg: #16161d;
+    --card: #1e1e26;
+    --card-2: #23232c;
+    --text-1: #ece7da;
+    --text-2: #8a8577;
+    --text-3: #5c584e;
+    --accent: #e78fae;
+    --accent-soft: rgba(231, 143, 174, .14);
+    --accent-2: #8ba3e0;
+    --accent-2-soft: rgba(139, 163, 224, .14);
+    --separator: #2e2c33;
+    --separator-strong: #3d3a44;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, .4);
+    --tabbar-bg: rgba(22, 22, 29, .94);
+    --navbar-bg: rgba(22, 22, 29, .94);
+
+    --el-color-primary: #e78fae;
+    --el-color-primary-light-9: rgba(231, 143, 174, .14);
+    --el-bg-color: #1e1e26;
+    --el-bg-color-page: #16161d;
+    --el-text-color-primary: #ece7da;
+    --el-text-color-regular: #b9b4a6;
+    --el-text-color-secondary: #8a8577;
+    --el-text-color-placeholder: #5c584e;
+    --el-border-color: rgba(84, 84, 88, .6);
+    --el-fill-color-blank: #1C1C1E;
+    --el-fill-color-light: rgba(120, 120, 128, .16);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.5;
+    color: var(--text-1);
+    font-size: 15px;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 花信纸纹 */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html.dark body::after { opacity: .07; }
+
+.serif { font-family: var(--serif); }
+.latin { font-family: var(--latin); }
+
+/* 印章 */
+.seal {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 19px;
+    transform: rotate(-6deg);
+    flex-shrink: 0;
+}
+
+ul, ol { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; }
+button { font-family: inherit; }
+
+/* ---------- Element Plus 原生化 ---------- */
+.el-button {
+    border-radius: var(--radius-btn);
+    font-weight: 500;
+}
+.el-button--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+.el-button--primary:hover, .el-button--primary:focus {
+    background: var(--el-color-primary-dark-2);
+    border-color: var(--el-color-primary-dark-2);
+}
+.el-button.is-plain {
+    background: var(--card);
+    border-color: var(--separator-strong);
+    color: var(--text-1);
+}
+
+.el-input__wrapper, .el-textarea__inner {
+    border-radius: var(--radius-btn);
+    background: var(--card);
+    box-shadow: 0 0 0 1px var(--separator) inset;
+}
+.el-input__wrapper.is-focus, .el-textarea__inner:focus {
+    box-shadow: 0 0 0 2px var(--accent) inset;
+}
+.el-input__wrapper:hover { box-shadow: 0 0 0 1px var(--separator-strong) inset; }
+
+.el-card {
+    background: var(--card);
+    border: 1px solid var(--separator);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-1);
+}
+.el-card__header { border-bottom: 1px solid var(--separator); }
+
+.el-dialog {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+.el-dialog__header { border-bottom: 1px solid var(--separator); margin-right: 0; padding: 16px 20px; }
+.el-dialog__title { font-weight: 600; font-size: 17px; color: var(--text-1); }
+.el-dialog__body { padding: 20px; color: var(--text-1); }
+
+.el-drawer { background: var(--card); }
+.el-drawer__header { border-bottom: 1px solid var(--separator); margin-bottom: 0; padding: 16px 20px; color: var(--text-1); }
+
+.el-dropdown__popper.el-popper, .el-popper {
+    background: var(--card);
+    border: 1px solid var(--separator);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+.el-dropdown-menu { background: transparent; }
+.el-dropdown-menu__item { color: var(--text-1); border-radius: 8px; margin: 2px 6px; }
+.el-dropdown-menu__item:hover { background: var(--accent-soft); color: var(--accent); }
+.el-popper__arrow::before { background: var(--card) !important; border-color: var(--separator) !important; }
+
+.el-select__popper { border-radius: 12px; }
+
+.el-message {
+    background: var(--card);
+    border: 1px solid var(--separator);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+.el-notification {
+    background: var(--card);
+    border: 1px solid var(--separator);
+    border-radius: 12px;
+}
+.el-message-box {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--separator);
+}
+
+.el-table { background: transparent; color: var(--text-1); }
+.el-table th.el-table__cell { background: var(--card); color: var(--text-2); font-weight: 600; }
+.el-table tr { background: transparent; }
+.el-table td.el-table__cell { border-bottom: 1px solid var(--separator); }
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell { background: var(--el-fill-color-light); }
+.el-table__body tr:hover > td.el-table__cell { background: var(--el-fill-color-light); }
+
+.el-pagination button, .el-pagination .el-pager li {
+    background: var(--card);
+    border-radius: 8px;
+    color: var(--text-1);
+}
+.el-pagination .el-pager li.is-active { background: var(--accent); color: #fff; }
+
+.el-switch.is-checked .el-switch__core { background: var(--success); border-color: var(--success); }
+
+.el-checkbox__inner { border-radius: 6px; }
+.el-checkbox__input.is-checked .el-checkbox__inner { background: var(--accent); border-color: var(--accent); }
+
+.el-loading-mask { background: rgba(255, 255, 255, .7); border-radius: inherit; }
+html.dark .el-loading-mask { background: rgba(0, 0, 0, .6); }
+
+.el-scrollbar__thumb { background: rgba(120, 120, 128, .4); }
+
+.el-menu { background: transparent; border-right: none; }
+.el-menu-item { border-radius: 10px; margin: 2px 8px; color: var(--text-2); height: 44px; }
+.el-menu-item:hover { background: var(--el-fill-color-light); color: var(--text-1); }
+.el-menu-item.is-active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+.el-tabs__item.is-active, .el-tabs__item:hover { color: var(--accent); }
+.el-tabs__active-bar { background: var(--accent); }
+
+.el-segmented { background: var(--el-fill-color-light); border-radius: 10px; padding: 2px; }
+.el-segmented__item.is-selected { background: var(--card); box-shadow: var(--shadow-sm); border-radius: 8px; }
+
+/* nprogress */
+#nprogress .bar { background: var(--accent); }
+
+/* ---------- 通用工具类 ---------- */
+.ios-card {
+    background: var(--card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--separator);
+}
+.ios-grouped-list {
+    background: var(--card);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--separator);
+}
+.ios-grouped-list > * + * { border-top: 1px solid var(--separator); }
+.ios-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    min-height: 48px;
+    gap: 12px;
+}
+.ios-row:active { background: var(--el-fill-color-light); }
+.ios-section-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    padding: 20px 16px 8px;
+}
+.text-1 { color: var(--text-1); }
+.text-2 { color: var(--text-2); }
+.text-3 { color: var(--text-3); }
+.text-accent { color: var(--accent); }
+.text-danger { color: var(--danger); }
