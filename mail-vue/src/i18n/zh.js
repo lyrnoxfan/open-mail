@@ -121,6 +121,8 @@ const zh = {
     complained: '被标记为垃圾',
     delayed: '发送被延迟',
     bounced: '发送失败',
+    remoteImagesBlocked: '已阻止 {total} 个远程资源（图片、背景等），以保护隐私',
+    showRemoteImages: '显示远程图片',
     attachments: '附件列表',
     attCount: '共 {total} 个',
     emailCount: '共 {total} 封',

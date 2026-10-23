@@ -121,6 +121,8 @@ const en = {
     complained: 'Complained',
     delayed: 'Delayed',
     bounced: 'Bounced',
+    remoteImagesBlocked: 'Blocked {total} remote resource(s) (images, backgrounds) to protect your privacy',
+    showRemoteImages: 'Show remote images',
     attachments: 'Attachments',
     attCount: 'Total {total}',
     emailCount: 'Total {total}',
